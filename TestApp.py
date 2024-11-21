@@ -20,15 +20,15 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Coordinates for the cities
 city_coords = {
-    "San Carlos, CA": {"lat": 37.5072, "lon": -122.2621},
+    "Minneapolis, MN": {"lat": 44.9778, "lon": 93.2650},
     "Madison, WI": {"lat": 43.0731, "lon": -89.4012}
 }
 
 # Scores for restaurants and entertainment
 scores = {
-    "San Carlos, CA": {
-        "restaurants": {"Town": 80, "Refuge": 70, "Johnston's Saltbox": 90},
-        "entertainment": {"Alcatraz": 85, "Golden Gate Bridge": 95, "Devil's Canyon Brewing Company": 60}
+    "Minneapolis, MN": {
+        "restaurants": {"Young Joni": 80, "Punch Pizza": 70, "Red Rabbit": 90},
+        "entertainment": {"Walker Art Museum": 85, "Lake Minnetonka": 95, "Mall of America": 60}
     },
     "Madison, WI": {
         "restaurants": {"Ahan": 75, "Nattspil": 85, "Estacion Inka": 65},
@@ -79,7 +79,7 @@ app.layout = dbc.Container([
         html.H1("Choose Your City", style={'text-align': 'center'}),
         html.Div([
             dbc.Button(
-                "San Carlos, CA", id='city-san-carlos', 
+                "Minneapolis, MN", id='city-san-carlos', 
                 color="primary", style={
                     'width': '300px', 'height': '120px', 
                     'margin': '10px', 'font-size': '24px', 'font-weight': 'bold',
@@ -152,7 +152,7 @@ def update_step_and_selection(san_carlos_clicks, madison_clicks, next_2_clicks, 
     # Step 1 -> Step 2: City selected
     if current_step == 1:
         if san_carlos_clicks:
-            return 2, "San Carlos, CA", dash.no_update, dash.no_update
+            return 2, "Minneapolis, MN", dash.no_update, dash.no_update
         elif madison_clicks:
             return 2, "Madison, WI", dash.no_update, dash.no_update
 
@@ -184,55 +184,46 @@ def generate_adventure_poem(city, restaurant, entertainment):
         # Define multiple Tanka-style poem templates
         poems = [
             f"""
-            {city} streets, bright lights,
-            Food at {restaurant} was hot,
-            Not as hot as you,
-            Sit on my face tonight,
-            Ended up at {entertainment}, damn.
+            {city}'s soft night glow,  
+            Dinner at {restaurant}, warm,  
+            Flavors lingered long,  
+            At {entertainment}, bright lights,  
+            Moments etched in memory.  
             """,
             f"""
-            Met up in {city},
-            {restaurant} filled us up,
-            But I want more—
-            You're smoking hot,
-            {entertainment} couldn't cool you down.
+            Through {city}'s streets,  
+            {restaurant} brought gentle calm,  
+            A meal to savor,  
+            Music at {entertainment},  
+            A day filled with quiet joy.  
             """,
             f"""
-            In {city}, we started,
-            Sexy motherfucker, you,
-            Ate at {restaurant},
-            You're delicious—
-            Ended up fucking at {entertainment}.
+            Wandering {city},  
+            {restaurant} felt like a home,  
+            Warmth within each bite,  
+            At {entertainment}, colors gleamed,  
+            A peaceful evening to keep.  
             """,
             f"""
-            {city} started classy,
-            {restaurant} was fun—
-            But let’s be real,
-            I’d rather taste you—
-            I did right there at {entertainment}.
+            Beneath {city}'s stars,  
+            {restaurant}'s meal was art,  
+            Crafted just for me,  
+            Lights sparkled at {entertainment},  
+            Soft laughter filled the cool air.  
             """,
             f"""
-            {city} was cute,
-            But not as cute as you bent over at {restaurant}—
-            We smashed at {entertainment},
-            Damn girl, you bad.
+            {city}, endless skies,  
+            At {restaurant}, I felt full,  
+            Food and heart aligned,  
+            {entertainment} shone with joy,  
+            A still moment to recall.  
             """,
             f"""
-            {city}, you and me,
-            {restaurant} had a vibe,
-            Your eyes screamed "take me",
-            {entertainment} just witnessed it all.
-            """,
-            f"""
-            {city} was cool,
-            {restaurant} was just to kill time,
-            Then {entertainment} hit, and so did we.
-            """,
-            f"""
-            Linked in {city},
-            Dined at {restaurant},
-            Vibed at {entertainment},
-            Tryna fuck?
+            {city} called out,  
+            {restaurant}'s meal answered,  
+            Quiet thoughts flowed through,  
+            At {entertainment}, bright scenes,  
+            A memory built in peace.  
             """
         ]
 
@@ -250,7 +241,7 @@ def generate_adventure_poem(city, restaurant, entertainment):
 )
 def update_title_and_map(city):
     if city:
-        return f"Isabelle's Selected City: {city}", generate_map(city)
+        return f"Selected City: {city}", generate_map(city)
     return "", {}
 
 # Update restaurant options when city is selected

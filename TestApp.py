@@ -20,7 +20,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Coordinates for the cities
 city_coords = {
-    "Minneapolis, MN": {"lat": 44.9778, "lon": 93.2650},
+    "Minneapolis, MN": {"lat": 44.9778, "lon": -93.2650},
     "Madison, WI": {"lat": 43.0731, "lon": -89.4012}
 }
 
